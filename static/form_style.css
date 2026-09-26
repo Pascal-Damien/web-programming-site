@@ -1,0 +1,57 @@
+fieldset {
+  border: 1px solid #178af0;
+  border-radius: 8px;
+  margin: 0 0 1.2rem;
+  padding: 1rem;
+}
+legend {
+  font-weight: bold;
+  color: #0c497c;
+  padding: 0 0.4rem;
+}
+label {
+  font-weight: 600;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="month"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  max-width: 420px;
+  padding: 0.45rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font: inherit;
+  margin-top: 0.2rem;
+}
+fieldset fieldset label {
+  display: inline-block;
+  font-weight: 400;
+  margin: 0.15rem 1rem 0.15rem 0;
+}
+input[type="color"] {
+  width: 60px;
+  height: 36px;
+  padding: 2px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+input[type="range"] {
+  max-width: 320px;
+}
+input[type="reset"],
+input[type="submit"] {
+  background: #f29937;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}

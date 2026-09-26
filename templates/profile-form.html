@@ -1,0 +1,425 @@
+{% extends "base.html" %} {% block title %} Fill Your CV {% endblock %} {% block
+head %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='form_style.css') }}"
+/>
+{% endblock %} {% block content%}
+
+<h1>Senior Engineering Student – Academic Profile</h1>
+
+<p>
+  Complete this form to provide information about your academic background,
+  technical skills, internship experience, and Final Year Project preferences.
+</p>
+
+<form action="/submit-profile" method="post">
+  <!-- ===================================================== -->
+  <!-- 1. PERSONAL INFORMATION -->
+  <!-- ===================================================== -->
+
+  <fieldset>
+    <legend>1. Personal Information</legend>
+
+    <label for="student_id">Student ID:</label>
+    <input
+      type="text"
+      id="student_id"
+      name="student_id"
+      placeholder="202312345"
+      pattern="^\d{9}$"
+      required
+    />
+    <span style="color: red">name="student_id"</span>
+
+    <br /><br />
+
+    <label for="fullname">Full Name:</label>
+    <input
+      type="text"
+      id="fullname"
+      name="fullname"
+      placeholder="First name and last name"
+      required
+    />
+    <span style="color: red">name="fullname"</span>
+
+    <br /><br />
+
+    <label for="email">USEK Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      placeholder="student@net.usek.edu.lb"
+      required
+    />
+    <span style="color: red">name="email"</span>
+
+    <br /><br />
+
+    <label for="phone">Mobile Number:</label>
+    <input
+      type="tel"
+      id="phone"
+      name="phone"
+      placeholder="+961 70 123456"
+      pattern="\+961[- ]?(3|70|71|76|78|79|81|[145-9])\d{6}"
+      required
+    />
+    <span style="color: red">name="phone"</span>
+
+    <br /><br />
+
+    <label for="birthdate">Date of Birth:</label>
+    <input type="date" id="birthdate" name="birthdate" />
+    <span style="color: red">name="birthdate"</span>
+    <br /><br />
+
+    <label for="portfolio">GitHub:</label>
+    <input
+      type="url"
+      id="portfolio"
+      name="portfolio"
+      placeholder="https://github.com/username"
+    />
+    <span style="color: red">name="portfolio"</span> <br /><br />
+    <label for="gin446">GIN446 website:</label>
+    <input
+      type="url"
+      id="gin446"
+      name="gin446"
+      placeholder="Your RENDER website link"
+    />
+    <span style="color: red">name="gin446"</span>
+  </fieldset>
+
+  <br />
+
+  <!-- ===================================================== -->
+  <!-- 2. ACADEMIC INFORMATION -->
+  <!-- ===================================================== -->
+
+  <fieldset>
+    <legend>2. Academic Information</legend>
+
+    <label for="major">Engineering Major:</label>
+
+    <select id="major" name="major" required>
+      <option value="">-- Select your major --</option>
+      <option value="computer">Computer Engineering</option>
+      <option value="electrical">Electrical Engineering</option>
+      <option value="biomedical">Biomedical Engineering</option>
+      <option value="telecommunications">Telecommunications Engineering</option>
+    </select>
+    <span style="color: red">name="major"</span>
+    <br /><br />
+
+    <label for="gpa">Current GPA / 100:</label>
+
+    <input
+      type="number"
+      id="gpa"
+      name="gpa"
+      min="40"
+      max="100"
+      step="0.01"
+      placeholder="85.50"
+    />
+    <span style="color: red">name="gpa"</span>
+    <br /><br />
+
+    <label for="credits">Credits Completed:</label>
+
+    <input
+      type="number"
+      id="credits"
+      name="credits"
+      min="0"
+      max="148"
+      step="1"
+    />
+    <span style="color: red">name="credits"</span>
+    <br /><br />
+
+    <p>Expected Graduation:</p>
+
+    <label>
+      <input type="radio" name="graduation" value="spring" required />
+      Spring
+    </label>
+
+    <label>
+      <input type="radio" name="graduation" value="summer" />
+      Summer
+    </label>
+
+    <label>
+      <input type="radio" name="graduation" value="fall" />
+      Fall
+    </label>
+    <span style="color: red">name="graduation"</span>
+    <br /><br />
+
+    <label for="graduation_month"> Expected Graduation Month & Year: </label>
+
+    <input type="month" id="graduation_month" name="graduation_month" />
+    <br /><span style="color: red">name="graduation_month"</span> <br /><br />
+    <p>Have you completed an engineering internship?</p>
+
+    <label>
+      <input type="radio" name="internship_completed" value="yes" />
+      Yes
+    </label>
+
+    <label>
+      <input type="radio" name="internship_completed" value="no" />
+      No
+    </label>
+    <br /><span style="color: red">name="internship_completed"</span>
+  </fieldset>
+  <br />
+
+  <!-- ===================================================== -->
+  <!-- 3. TECHNICAL BACKGROUND -->
+  <!-- ===================================================== -->
+
+  <fieldset>
+    <legend>3. Technical Background</legend>
+
+    <p>Select all areas in which you have experience:</p>
+
+    <label>
+      <input type="checkbox" name="skills" value="programming" />
+      Programming
+    </label>
+
+    <br />
+
+    <label>
+      <input type="checkbox" name="skills" value="embedded" />
+      Embedded Systems
+    </label>
+
+    <br />
+
+    <label>
+      <input type="checkbox" name="skills" value="electronics" />
+      Electronics
+    </label>
+
+    <br />
+
+    <label>
+      <input type="checkbox" name="skills" value="networks" />
+      Computer Networks
+    </label>
+
+    <br />
+
+    <label>
+      <input type="checkbox" name="skills" value="telecommunications" />
+      Telecommunications
+    </label>
+
+    <br />
+
+    <label>
+      <input type="checkbox" name="skills" value="biomedical" />
+      Biomedical Instrumentation
+    </label>
+
+    <br />
+
+    <label>
+      <input type="checkbox" name="skills" value="ai" />
+      Artificial Intelligence / Machine Learning
+    </label>
+
+    <br />
+
+    <label>
+      <input type="checkbox" name="skills" value="signal-processing" />
+      Signal Processing
+    </label>
+    <br /><span style="color: red">name="skills"</span>
+
+    <br /><br />
+
+    <label for="language"> Primary Programming Language: </label>
+
+    <input
+      type="text"
+      id="language"
+      name="language"
+      list="languages"
+      placeholder="Start typing..."
+    />
+
+    <datalist id="languages">
+      <option value="Python"></option>
+      <option value="C"></option>
+      <option value="C++"></option>
+      <option value="Java"></option>
+      <option value="JavaScript"></option>
+      <option value="MATLAB"></option>
+      <option value="VHDL"></option>
+      <option value="Verilog"></option>
+    </datalist>
+    <br /><span style="color: red">name="language"</span>
+
+    <br /><br />
+
+    <label for="software"> Engineering Software Used: </label>
+
+    <select id="software" name="software" multiple size="6">
+      <option value="matlab">MATLAB</option>
+      <option value="simulink">Simulink</option>
+      <option value="labview">LabVIEW</option>
+      <option value="ltspice">LTspice</option>
+      <option value="vivado">Vivado</option>
+      <option value="solidworks">SolidWorks</option>
+      <option value="proteus">Proteus</option>
+      <option value="wireshark">Wireshark</option>
+    </select>
+    <br /><span style="color: red">name="software"</span>
+
+    <p>Hold Ctrl (Windows) or Command (Mac) to select several options.</p>
+  </fieldset>
+
+  <br />
+
+  <!-- ===================================================== -->
+  <!-- 4. FINAL YEAR PROJECT -->
+  <!-- ===================================================== -->
+
+  <fieldset>
+    <legend>4. Final Year Project</legend>
+
+    <label for="project_title"> Proposed Project Title: </label>
+
+    <input
+      type="text"
+      id="project_title"
+      name="project_title"
+      maxlength="120"
+      placeholder="Enter a tentative project title"
+    />
+    <span style="color: red">name="project_title"</span>
+
+    <br /><br />
+
+    <label for="project_area"> Preferred Project Area: </label>
+
+    <select id="project_area" name="project_area">
+      <optgroup label="Computer Engineering">
+        <option value="ai">Artificial Intelligence</option>
+        <option value="web">Web Applications</option>
+        <option value="cybersecurity">Cybersecurity</option>
+        <option value="iot">Internet of Things</option>
+      </optgroup>
+
+      <optgroup label="Electrical Engineering">
+        <option value="power">Power Systems</option>
+        <option value="renewable">Renewable Energy</option>
+        <option value="control">Control Systems</option>
+      </optgroup>
+
+      <optgroup label="Biomedical Engineering">
+        <option value="medical-imaging">Medical Imaging</option>
+        <option value="biosensors">Biosensors</option>
+        <option value="medical-devices">Medical Devices</option>
+      </optgroup>
+
+      <optgroup label="Telecommunications Engineering">
+        <option value="wireless">Wireless Communications</option>
+        <option value="5g">5G / 6G Networks</option>
+        <option value="signal-processing">Digital Signal Processing</option>
+      </optgroup>
+    </select>
+    <span style="color: red">name="project_area"</span>
+
+    <br /><br />
+
+    <label for="description"> Brief Project Description: </label>
+
+    <br />
+
+    <textarea
+      id="description"
+      name="description"
+      rows="6"
+      cols="60"
+      maxlength="1000"
+      placeholder="Describe the problem, proposed solution, and expected outcome..."
+    ></textarea>
+    <span style="color: red">name="description"</span>
+    <br /><br />
+
+    <label for="team_size"> Preferred Team Size: </label>
+
+    <input
+      type="number"
+      id="team_size"
+      name="team_size"
+      min="1"
+      max="4"
+      value="2"
+    />
+    <span style="color: red">name="team_size"</span>
+
+    <br /><br />
+
+    <label for="project_color">
+      Choose a color for your project dashboard:
+    </label>
+
+    <input
+      type="color"
+      id="project_color"
+      name="project_color"
+      value="#336699"
+    />
+    <span style="color: red">name="project_color"</span>
+    <br /><br />
+    <label for="meeting_date"> Preferred Meeting Date: </label>
+
+    <input type="date" id="meeting_date" name="meeting_date" />
+    <span style="color: red">name="meeting_date"</span>
+
+    <br /><br />
+
+    <label for="meeting_time"> Preferred Meeting Time: </label>
+
+    <input
+      type="time"
+      id="meeting_time"
+      name="meeting_time"
+      min="08:00"
+      max="18:00"
+    />
+    <span style="color: red">name="meeting_time"</span>
+    <br /><br />
+  </fieldset>
+
+  <br />
+
+  <!-- Hidden information -->
+  <input type="hidden" name="form_version" value="2026-2027" />
+
+  <!-- ===================================================== -->
+  <!-- FORM BUTTONS -->
+  <!-- ===================================================== -->
+
+  <label>
+    <input type="checkbox" name="confirmation" required />
+    I confirm that the information provided is accurate.
+  </label>
+  <span style="color: red">name="confirmation"</span>
+
+  <br /><br />
+  <input type="submit" value="Submit Profile" />
+  <input type="reset" value="Clear Form" />
+</form>
+
+{% endblock %}
