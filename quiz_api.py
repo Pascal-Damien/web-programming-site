@@ -81,6 +81,10 @@ def database_uri():
     if url:
         if url.startswith("postgres://"):
             url = url.replace("postgres://", "postgresql://", 1)
+        # Use the psycopg2 driver (the one in requirements.txt), so local and
+        # Render behave the same regardless of SQLAlchemy's default.
+        if url.startswith("postgresql://"):
+            url = url.replace("postgresql://", "postgresql+psycopg2://", 1)
         return url
     return "sqlite:///" + os.path.abspath("quiz.db")
 
