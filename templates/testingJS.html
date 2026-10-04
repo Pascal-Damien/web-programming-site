@@ -18,6 +18,74 @@
       console.log(points2); // 2
       console.log(points3); // 40
       console.log(points4); // 1
+
+      class Person {
+        // 1. You MUST declare private fields at the top of the class
+        #name;
+        #age;
+
+        constructor(name, age) {
+          // This still routes through the setters for validation
+          this.name = name;
+          this.age = age;
+        }
+
+        // --- NAME GETTER & SETTER ---
+        get name() {
+          return this.#name; // Safely reads the true private field
+        }
+
+        set name(newName) {
+          if (typeof newName === "string" && newName.trim().length > 0) {
+            this.#name = newName;
+          } else {
+            console.error("Error: Name must be a non-empty string.");
+          }
+        }
+
+        // --- AGE GETTER & SETTER ---
+        get age() {
+          return this.#age;
+        }
+
+        set age(newAge) {
+          if (typeof newAge === "number" && newAge >= 0) {
+            this.#age = newAge;
+          } else {
+            console.error("Error: Age must be a positive number.");
+          }
+        }
+
+        introduce() {
+          return `Hi, my name is ${this.name} and I am ${this.age} years old.`;
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, age, major) {
+          super(name, age);
+          this.major = major;
+        }
+
+        study() {
+          return `${this.name} is studying ${this.major}.`;
+        }
+      }
+
+      class Student extends Person {
+        constructor(name, age, major) {
+          super(name, age); // Triggers parent setters during construction
+          this.major = major;
+        }
+
+        study() {
+          return `${this.name} is studying ${this.major}.`;
+        }
+
+        introduce() {
+          return `${super.introduce()} I am majoring in ${this.major}.`;
+        }
+      }
     </script>
   </body>
 </html>
